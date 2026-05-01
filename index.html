@@ -45,6 +45,23 @@ body {
     transform: translateY(0);
 }
 
+/* TEXTO BONUS */
+.bonus {
+    margin: 20px 0 10px;
+    font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ffd700, #ffae00, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(255,215,0,0.7);
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px gold; }
+    to { text-shadow: 0 0 15px gold; }
+}
+
 /* BOTON */
 .btn {
     display: block;
@@ -107,6 +124,11 @@ body {
     <!-- NOTIFICACION -->
     <div id="notif" class="notification"></div>
 
+    <!-- TEXTO BONUS -->
+    <div class="bonus">
+        🎁 Te regalamos un 30% EXTRA a tu recarga
+    </div>
+
     <!-- BOTON -->
     <a class="btn" href="https://wa.me/549XXXXXXXXXX" target="_blank">
         📲 Pedir mi bono
@@ -123,7 +145,7 @@ body {
             <div class="slot" style="background-image:url('https://images.unsplash.com/photo-1607863680198-23d4b2565df0?w=400')"></div>
             <div class="slot" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400')"></div>
 
-            <!-- DUPLICADO PARA LOOP -->
+            <!-- DUPLICADO -->
             <div class="slot" style="background-image:url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400')"></div>
             <div class="slot" style="background-image:url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=400')"></div>
             <div class="slot" style="background-image:url('https://images.unsplash.com/photo-1607863680198-23d4b2565df0?w=400')"></div>
