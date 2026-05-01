@@ -6,9 +6,7 @@
 <title>Luxor Red Casino</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
@@ -38,7 +36,6 @@ body::after {
     z-index: -1;
 }
 
-/* CONTENEDOR */
 .container {
     max-width: 420px;
     margin: auto;
@@ -50,13 +47,12 @@ body::after {
     justify-content: center;
 }
 
-/* LOGO */
 .logo {
     width: 200px;
     margin: 10px auto;
 }
 
-/* NOTIFICACION COMPACTA */
+/* NOTIFICACION */
 .notification {
     margin: 6px auto;
     max-width: 320px;
@@ -80,7 +76,13 @@ body::after {
     transform: translateY(0);
 }
 
-/* TEXTO BONUS */
+.stars {
+    color: #fbbc05;
+    font-size: 12px;
+    margin-left: 6px;
+}
+
+/* BONUS */
 .bonus {
     margin: 8px 0;
     font-size: 20px;
@@ -92,7 +94,7 @@ body::after {
     text-shadow: 0 0 10px rgba(0,255,102,0.9);
 }
 
-/* BOTON WHATSAPP */
+/* BOTON */
 .btn {
     display: flex;
     align-items: center;
@@ -117,13 +119,8 @@ body::after {
     to { transform: scale(1.07); }
 }
 
-/* ICONO REAL */
-.wa-icon {
-    width: 28px;
-    height: 28px;
-}
+.wa-icon { width: 28px; height: 28px; }
 
-/* GANAMOS */
 .ganamos {
     width: 170px;
     margin: 8px auto;
@@ -138,7 +135,7 @@ body::after {
 .slots {
     display: flex;
     gap: 10px;
-    animation: scroll 22s linear infinite;
+    animation: scroll 14s linear infinite; /* MAS RAPIDO */
 }
 
 .slot {
@@ -154,10 +151,9 @@ body::after {
     object-fit: cover;
 }
 
-/* ANIMACION */
 @keyframes scroll {
-    0% {transform: translateX(0);}
-    100% {transform: translateX(-50%);}
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 </style>
 </head>
@@ -166,63 +162,65 @@ body::after {
 
 <div class="container">
 
-    <img src="logo.png" class="logo">
+<img src="logo.png" class="logo">
 
-    <div id="notif" class="notification"></div>
+<div id="notif" class="notification"></div>
 
-    <div class="bonus">
-        🎁 Te regalamos un <span class="extra">30% EXTRA</span> en tu primer recarga
-    </div>
+<div class="bonus">
+🎁 Te regalamos un <span class="extra">30% EXTRA</span> en tu primer recarga
+</div>
 
-    <a class="btn" href="https://wa.me/549XXXXXXXXXX" target="_blank">
-        <img class="wa-icon" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
-        Pedir mi bono
-    </a>
+<a class="btn" href="https://wa.me/549XXXXXXXXXX" target="_blank">
+<img class="wa-icon" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+Pedir mi bono
+</a>
 
-    <img src="ganamos.png" class="ganamos">
+<img src="ganamos.png" class="ganamos">
 
-    <div class="slots-container">
-        <div class="slots">
+<div class="slots-container">
+<div class="slots">
 
-            <div class="slot"><img src="1111.png"></div>
-            <div class="slot"><img src="4444.png"></div>
-            <div class="slot"><img src="3333.png"></div>
-            <div class="slot"><img src="2222.png"></div>
-            <div class="slot"><img src="6666.webp"></div>
-            <div class="slot"><img src="5555.jpg"></div>
+<div class="slot"><img src="1111.png"></div>
+<div class="slot"><img src="4444.png"></div>
+<div class="slot"><img src="3333.png"></div>
+<div class="slot"><img src="2222.png"></div>
+<div class="slot"><img src="6666.webp"></div>
+<div class="slot"><img src="5555.jpg"></div>
 
-            <!-- DUPLICADO -->
-            <div class="slot"><img src="1111.png"></div>
-            <div class="slot"><img src="4444.png"></div>
-            <div class="slot"><img src="3333.png"></div>
-            <div class="slot"><img src="2222.png"></div>
-            <div class="slot"><img src="6666.webp"></div>
-            <div class="slot"><img src="5555.jpg"></div>
+<!-- DUPLICADO x2 para loop perfecto -->
+<div class="slot"><img src="1111.png"></div>
+<div class="slot"><img src="4444.png"></div>
+<div class="slot"><img src="3333.png"></div>
+<div class="slot"><img src="2222.png"></div>
+<div class="slot"><img src="6666.webp"></div>
+<div class="slot"><img src="5555.jpg"></div>
 
-        </div>
-    </div>
+</div>
+</div>
 
 </div>
 
 <script>
-const mensajes = [
-"María cargó $35.000",
-"Juan cargó $12.000",
-"Lucas cargó $50.000",
-"Sofía cargó $18.000",
-"Martín cargó $22.000",
-"Camila cargó $40.000",
-"Diego cargó $15.000",
-"Valentina cargó $28.000",
-"Nicolás cargó $60.000",
-"Paula cargó $10.000"
+const nombres = [
+"María","Juan","Lucas","Sofía","Martín","Camila","Diego","Valentina","Nicolás","Paula",
+"Leo","Carla","Ezequiel","Micaela","Fernando","Lucía","Bruno","Agustina","Tobías","Rocío",
+"Franco","Julieta","Santiago","Florencia","Alan","Antonella","Matías","Cande","Iván","Milagros",
+"Julián","Belén","Ramiro","Ailén","Tomás","Bianca","Facundo","Sol","Kevin","Dana",
+"Maxi","Gonzalo","Vicky","Emilia","Nahuel","Lara","Cristian","Melina","Axel","Camilo"
+];
+
+const montos = [
+"$5.000","$8.000","$10.000","$12.000","$15.000","$18.000","$20.000","$22.000","$25.000","$30.000",
+"$35.000","$40.000","$45.000","$50.000","$60.000"
 ];
 
 const notif = document.getElementById("notif");
 
 function mostrarNotif() {
-    const random = mensajes[Math.floor(Math.random() * mensajes.length)];
-    notif.innerText = random + " en Luxor Red";
+    const nombre = nombres[Math.floor(Math.random() * nombres.length)];
+    const monto = montos[Math.floor(Math.random() * montos.length)];
+
+    notif.innerHTML = `${nombre} cargó ${monto} en Luxor Red <span class="stars">★★★★★</span>`;
     notif.classList.add("show");
 
     setTimeout(() => {
@@ -231,7 +229,7 @@ function mostrarNotif() {
 }
 
 mostrarNotif();
-setInterval(mostrarNotif, 3500);
+setInterval(mostrarNotif, 3000);
 </script>
 
 </body>
