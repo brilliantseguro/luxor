@@ -25,13 +25,12 @@ body::before {
     z-index: -1;
 }
 
-/* CAPA DORADA */
 body::after {
     content: "";
     position: fixed;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(0,0,0,0.8), rgba(212,175,55,0.4));
+    background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(212,175,55,0.4));
     z-index: -1;
 }
 
@@ -117,12 +116,20 @@ body::after {
 .slot {
     min-width: 130px;
     height: 180px;
-    border-radius: 10px;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 0 10px rgba(255,215,0,0.5);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 0 12px rgba(255,215,0,0.6);
+    border: 1px solid rgba(255,215,0,0.5);
 }
 
+.slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ANIMACION */
 @keyframes scroll {
     0% {transform: translateX(0);}
     100% {transform: translateX(-50%);}
@@ -138,7 +145,7 @@ body::after {
     <!-- LOGO -->
     <img src="logo.png" class="logo">
 
-    <!-- NOTIF -->
+    <!-- NOTIFICACION -->
     <div id="notif" class="notification"></div>
 
     <!-- BONUS -->
@@ -158,19 +165,16 @@ body::after {
     <div class="slots-container">
         <div class="slots">
 
-            <!-- PRAGMATIC STYLE -->
-            <div class="slot" style="background-image:url('https://i.imgur.com/zY6X6XQ.jpg')"></div> <!-- Joker Jewels -->
-            <div class="slot" style="background-image:url('https://i.imgur.com/Y6XW9rF.jpg')"></div> <!-- Sweet Bonanza -->
-            <div class="slot" style="background-image:url('https://i.imgur.com/EGpVn5B.jpg')"></div> <!-- Gates of Olympus -->
-            <div class="slot" style="background-image:url('https://i.imgur.com/3gZQZ0p.jpg')"></div> <!-- The Dog House -->
-            <div class="slot" style="background-image:url('https://i.imgur.com/7bKQ9Xk.jpg')"></div> <!-- Big Bass -->
+            <div class="slot"><img src="1111.png"></div>
+            <div class="slot"><img src="4444.png"></div>
+            <div class="slot"><img src="3333.png"></div>
+            <div class="slot"><img src="2222.png"></div>
 
             <!-- DUPLICADO -->
-            <div class="slot" style="background-image:url('https://i.imgur.com/zY6X6XQ.jpg')"></div>
-            <div class="slot" style="background-image:url('https://i.imgur.com/Y6XW9rF.jpg')"></div>
-            <div class="slot" style="background-image:url('https://i.imgur.com/EGpVn5B.jpg')"></div>
-            <div class="slot" style="background-image:url('https://i.imgur.com/3gZQZ0p.jpg')"></div>
-            <div class="slot" style="background-image:url('https://i.imgur.com/7bKQ9Xk.jpg')"></div>
+            <div class="slot"><img src="1111.png"></div>
+            <div class="slot"><img src="4444.png"></div>
+            <div class="slot"><img src="3333.png"></div>
+            <div class="slot"><img src="2222.png"></div>
 
         </div>
     </div>
