@@ -25,8 +25,8 @@ body::before {
     inset: 0;
     background: url("fondoweb.png") center/cover no-repeat;
     opacity: 0.32;
-    filter: blur(2.5px);
-    transform: scale(1.04);
+    filter: blur(2px);
+    transform: scale(1.03);
     z-index: -2;
 }
 
@@ -43,35 +43,36 @@ body::after {
     max-width: 420px;
     margin: auto;
     text-align: center;
-    padding: 20px 18px 30px;
+    padding: 20px 18px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* IMPORTANTE para que no corte el logo */
+    justify-content: center;
 }
 
 /* LOGO */
 .logo {
     width: 200px;
-    max-width: 80%;
-    margin: 20px auto 10px; /* más espacio arriba */
+    margin: 10px auto;
 }
 
-/* NOTIFICACION NUEVA */
+/* NOTIFICACION COMPACTA */
 .notification {
-    margin: 8px auto;
-    max-width: 300px;
+    margin: 6px auto;
+    max-width: 320px;
     background: rgba(0,0,0,0.45);
     backdrop-filter: blur(10px);
-    padding: 10px 12px;
-    border-radius: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
     font-size: 13px;
-    text-align: left;
     border: 1px solid #00ff66;
-    box-shadow: 0 0 10px rgba(0,255,100,0.3);
+    box-shadow: 0 0 8px rgba(0,255,100,0.3);
     opacity: 0;
     transform: translateY(10px);
     transition: 0.4s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .notification.show {
@@ -79,27 +80,11 @@ body::after {
     transform: translateY(0);
 }
 
-.review-name {
-    font-weight: 900;
-    color: #ffffff;
-}
-
-.stars {
-    color: #fbbc05;
-    font-size: 14px;
-}
-
-.review-text {
-    color: #dcdcdc;
-    font-weight: 600;
-}
-
-/* BONUS */
+/* TEXTO BONUS */
 .bonus {
-    margin: 12px 0 8px;
-    font-size: 21px;
+    margin: 8px 0;
+    font-size: 20px;
     font-weight: 900;
-    color: #fff;
 }
 
 .bonus .extra {
@@ -107,39 +92,40 @@ body::after {
     text-shadow: 0 0 10px rgba(0,255,102,0.9);
 }
 
-/* BOTON */
+/* BOTON WHATSAPP */
 .btn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     padding: 18px;
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 900;
     border-radius: 999px;
-    background: rgba(37,211,102,0.22);
-    backdrop-filter: blur(14px);
-    border: 2px solid rgba(37,211,102,0.95);
-    color: #ffffff;
+    background: rgba(37,211,102,0.25);
+    backdrop-filter: blur(12px);
+    border: 2px solid #25D366;
+    color: white;
     text-decoration: none;
-    margin: 14px 0;
-    box-shadow: 0 0 22px rgba(37,211,102,0.65);
-    animation: pulse 0.85s infinite alternate;
-}
-
-.wa-icon {
-    width: 30px;
-    height: 30px;
+    margin: 10px 0;
+    box-shadow: 0 0 20px rgba(37,211,102,0.7);
+    animation: pulse 0.8s infinite alternate;
 }
 
 @keyframes pulse {
     from { transform: scale(1); }
-    to { transform: scale(1.08); }
+    to { transform: scale(1.07); }
+}
+
+/* ICONO REAL */
+.wa-icon {
+    width: 28px;
+    height: 28px;
 }
 
 /* GANAMOS */
 .ganamos {
-    width: 180px;
+    width: 170px;
     margin: 8px auto;
 }
 
@@ -156,12 +142,10 @@ body::after {
 }
 
 .slot {
-    min-width: 120px;
-    height: 170px;
-    border-radius: 12px;
+    min-width: 110px;
+    height: 160px;
+    border-radius: 10px;
     overflow: hidden;
-    background: #000;
-    box-shadow: 0 0 10px rgba(255,215,0,0.5);
 }
 
 .slot img {
@@ -182,32 +166,24 @@ body::after {
 
 <div class="container">
 
-    <!-- LOGO -->
     <img src="logo.png" class="logo">
 
-    <!-- NOTIFICACION -->
     <div id="notif" class="notification"></div>
 
-    <!-- BONUS -->
     <div class="bonus">
         🎁 Te regalamos un <span class="extra">30% EXTRA</span> en tu primer recarga
     </div>
 
-    <!-- BOTON -->
     <a class="btn" href="https://wa.me/549XXXXXXXXXX" target="_blank">
-        <svg class="wa-icon" viewBox="0 0 32 32">
-            <circle cx="16" cy="16" r="16" fill="#25D366"/>
-            <path fill="#fff" d="M23.47 19.32c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.11 3.22 5.11 4.51.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/>
-        </svg>
+        <img class="wa-icon" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
         Pedir mi bono
     </a>
 
-    <!-- GANAMOS -->
     <img src="ganamos.png" class="ganamos">
 
-    <!-- SLOTS -->
     <div class="slots-container">
         <div class="slots">
+
             <div class="slot"><img src="1111.png"></div>
             <div class="slot"><img src="4444.png"></div>
             <div class="slot"><img src="3333.png"></div>
@@ -222,6 +198,7 @@ body::after {
             <div class="slot"><img src="2222.png"></div>
             <div class="slot"><img src="6666.webp"></div>
             <div class="slot"><img src="5555.jpg"></div>
+
         </div>
     </div>
 
@@ -229,38 +206,32 @@ body::after {
 
 <script>
 const mensajes = [
-    { nombre: "María", monto: "$35.000" },
-    { nombre: "Juan", monto: "$12.000" },
-    { nombre: "Lucas", monto: "$50.000" },
-    { nombre: "Sofía", monto: "$18.000" },
-    { nombre: "Martín", monto: "$22.000" },
-    { nombre: "Camila", monto: "$40.000" },
-    { nombre: "Diego", monto: "$15.000" },
-    { nombre: "Valentina", monto: "$28.000" },
-    { nombre: "Nicolás", monto: "$60.000" },
-    { nombre: "Paula", monto: "$10.000" }
+"María cargó $35.000",
+"Juan cargó $12.000",
+"Lucas cargó $50.000",
+"Sofía cargó $18.000",
+"Martín cargó $22.000",
+"Camila cargó $40.000",
+"Diego cargó $15.000",
+"Valentina cargó $28.000",
+"Nicolás cargó $60.000",
+"Paula cargó $10.000"
 ];
 
 const notif = document.getElementById("notif");
 
 function mostrarNotif() {
     const random = mensajes[Math.floor(Math.random() * mensajes.length)];
-
-    notif.innerHTML = `
-        <div class="review-name">${random.nombre}</div>
-        <div class="stars">★★★★★</div>
-        <div class="review-text">cargó ${random.monto} en Luxor Red</div>
-    `;
-
+    notif.innerText = random + " en Luxor Red";
     notif.classList.add("show");
 
     setTimeout(() => {
         notif.classList.remove("show");
-    }, 3000);
+    }, 2500);
 }
 
 mostrarNotif();
-setInterval(mostrarNotif, 4000);
+setInterval(mostrarNotif, 3500);
 </script>
 
 </body>
