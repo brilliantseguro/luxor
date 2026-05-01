@@ -53,7 +53,7 @@ body::after {
     margin: 8px auto;
 }
 
-/* NOTIFICACION */
+/* NOTIFICACION UNA LINEA */
 .notification {
     margin: 6px auto;
     max-width: 320px;
@@ -76,21 +76,10 @@ body::after {
     white-space: nowrap;
 }
 
-.notification.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* estrellas */
+/* estrellas pequeñas */
 .stars {
     color: #fbbc05;
     font-size: 11px;
-}
-
-/* VERDE OSCURO */
-.highlight {
-    color: #0f8a2b;
-    font-weight: 700;
 }
 
 /* BONUS */
@@ -229,8 +218,7 @@ function mostrarNotif() {
 
     notif.innerHTML = `
         <span class="stars">★★★★★</span>
-        <span class="highlight">${nombre}</span> acaba de acreditar 
-        <span class="highlight">${monto}</span> en Red Luxor
+        ${nombre} acaba de acreditar ${monto} en Red Luxor
     `;
 
     notif.classList.add("show");
