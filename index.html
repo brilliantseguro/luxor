@@ -6,6 +6,10 @@
 <title>Luxor Red Casino</title>
 
 <style>
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -14,49 +18,56 @@ body {
     overflow-x: hidden;
 }
 
-/* FONDO PIRAMIDE */
+/* FONDO PIRÁMIDE */
 body::before {
     content: "";
     position: fixed;
-    width: 100%;
-    height: 100%;
-    background: url('https://images.unsplash.com/photo-1539650116574-75c0c6d3f5a1?w=1200') center/cover no-repeat;
-    opacity: 0.15;
-    z-index: -1;
+    inset: 0;
+    background: url("fondoweb.png") center/cover no-repeat;
+    opacity: 0.32;
+    filter: blur(2.5px);
+    transform: scale(1.04);
+    z-index: -2;
 }
 
+/* CAPA OSCURA/DORADA PARA QUE SE LEA BIEN */
 body::after {
     content: "";
     position: fixed;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(212,175,55,0.4));
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.55), rgba(150,105,20,0.45));
     z-index: -1;
 }
 
 /* CONTENEDOR */
 .container {
-    max-width: 400px;
+    max-width: 420px;
     margin: auto;
     text-align: center;
-    padding: 20px;
+    padding: 18px;
+    min-height: 100vh;
 }
 
 /* LOGO */
 .logo {
-    width: 260px;
-    margin: 20px auto;
+    width: 270px;
+    max-width: 90%;
+    margin: 16px auto 8px;
+    display: block;
 }
 
-/* NOTIFICACION */
+/* NOTIFICACIÓN */
 .notification {
     margin: 10px auto;
-    max-width: 280px;
-    background: rgba(0,0,0,0.85);
+    max-width: 300px;
+    background: rgba(0,0,0,0.72);
+    backdrop-filter: blur(8px);
     padding: 12px;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid gold;
     font-size: 14px;
+    box-shadow: 0 0 14px rgba(255,215,0,0.35);
     opacity: 0;
     transform: translateY(10px);
     transition: 0.4s;
@@ -69,116 +80,132 @@ body::after {
 /* BONUS */
 .bonus {
     margin: 20px 0 10px;
-    font-size: 20px;
-    font-weight: bold;
-    background: linear-gradient(90deg, #ffd700, #ffae00, #fff);
+    font-size: 22px;
+    line-height: 1.25;
+    font-weight: 900;
+    background: linear-gradient(90deg, #ffd700, #ffae00, #fff, #ffd700);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 10px gold;
+    text-shadow: 0 0 14px rgba(255,215,0,0.75);
 }
 
-/* BOTON */
+/* BOTÓN */
 .btn {
     display: block;
     padding: 18px;
-    font-size: 20px;
-    border-radius: 12px;
-    background: rgba(0,255,100,0.15);
-    backdrop-filter: blur(10px);
+    font-size: 21px;
+    font-weight: 900;
+    border-radius: 16px;
+    background: rgba(0,255,120,0.18);
+    backdrop-filter: blur(12px);
     border: 2px solid #00ff88;
     color: #00ff88;
     text-decoration: none;
-    margin: 20px 0;
+    margin: 18px 0;
+    box-shadow: 0 0 22px rgba(0,255,136,0.45);
+    animation: pulse 1.4s infinite alternate;
 }
-.btn:hover {
-    background: #00ff88;
-    color: black;
+
+@keyframes pulse {
+    from { transform: scale(1); box-shadow: 0 0 14px rgba(0,255,136,0.35); }
+    to { transform: scale(1.03); box-shadow: 0 0 28px rgba(0,255,136,0.8); }
 }
 
 /* GANAMOS */
 .ganamos {
-    width: 180px;
-    margin: 10px auto;
+    width: 210px;
+    max-width: 80%;
+    margin: 10px auto 18px;
+    display: block;
 }
 
 /* SLOTS */
 .slots-container {
     overflow: hidden;
-    margin-top: 20px;
+    margin-top: 18px;
+    padding: 8px 0 18px;
 }
 
 .slots {
     display: flex;
     gap: 10px;
     animation: scroll 22s linear infinite;
+    width: max-content;
 }
 
 .slot {
     min-width: 130px;
     height: 180px;
-    border-radius: 12px;
+    border-radius: 14px;
     overflow: hidden;
     background: #000;
-    box-shadow: 0 0 12px rgba(255,215,0,0.6);
-    border: 1px solid rgba(255,215,0,0.5);
+    box-shadow: 0 0 14px rgba(255,215,0,0.65);
+    border: 1px solid rgba(255,215,0,0.6);
 }
 
 .slot img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
-/* ANIMACION */
+/* ANIMACIÓN */
 @keyframes scroll {
-    0% {transform: translateX(0);}
-    100% {transform: translateX(-50%);}
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 250px;
+    }
+
+    .bonus {
+        font-size: 20px;
+    }
+
+    .btn {
+        font-size: 20px;
+    }
 }
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-    <!-- LOGO -->
-    <img src="logo.png" class="logo">
+    <img src="logo.png" class="logo" alt="Luxor Red">
 
-    <!-- NOTIFICACION -->
     <div id="notif" class="notification"></div>
 
-    <!-- BONUS -->
     <div class="bonus">
         🎁 Te regalamos un 30% EXTRA a tu recarga
     </div>
 
-    <!-- BOTON -->
     <a class="btn" href="https://wa.me/549XXXXXXXXXX" target="_blank">
         📲 Pedir mi bono
     </a>
 
-    <!-- GANAMOS -->
-    <img src="ganamos.png" class="ganamos">
+    <img src="ganamos.png" class="ganamos" alt="Ganamos.net">
 
-    <!-- SLOTS -->
     <div class="slots-container">
         <div class="slots">
 
-            <div class="slot"><img src="1111.png"></div>
-            <div class="slot"><img src="4444.png"></div>
-            <div class="slot"><img src="3333.png"></div>
-            <div class="slot"><img src="2222.png"></div>
-            <div class="slot"><img src="6666.webp"></div>
-            <div class="slot"><img src="5555.jpg"></div>
+            <div class="slot"><img src="1111.png" alt="Joker's Jewels Cash"></div>
+            <div class="slot"><img src="4444.png" alt="Joker's Jewels Hot"></div>
+            <div class="slot"><img src="3333.png" alt="Sweet Bonanza"></div>
+            <div class="slot"><img src="2222.png" alt="Big Bass Bonanza"></div>
+            <div class="slot"><img src="6666.webp" alt="Sugar Rush"></div>
+            <div class="slot"><img src="5555.jpg" alt="Volcano Rising"></div>
 
-            <!-- DUPLICADO PARA LOOP -->
-            <div class="slot"><img src="1111.png"></div>
-            <div class="slot"><img src="4444.png"></div>
-            <div class="slot"><img src="3333.png"></div>
-            <div class="slot"><img src="2222.png"></div>
-            <div class="slot"><img src="6666.webp"></div>
-            <div class="slot"><img src="5555.jpg"></div>
+            <div class="slot"><img src="1111.png" alt="Joker's Jewels Cash"></div>
+            <div class="slot"><img src="4444.png" alt="Joker's Jewels Hot"></div>
+            <div class="slot"><img src="3333.png" alt="Sweet Bonanza"></div>
+            <div class="slot"><img src="2222.png" alt="Big Bass Bonanza"></div>
+            <div class="slot"><img src="6666.webp" alt="Sugar Rush"></div>
+            <div class="slot"><img src="5555.jpg" alt="Volcano Rising"></div>
 
         </div>
     </div>
@@ -187,16 +214,16 @@ body::after {
 
 <script>
 const mensajes = [
-"Maria cargó $35.000",
-"Juan cargó $12.000",
-"Lucas cargó $50.000",
-"Sofía cargó $18.000",
-"Martín cargó $22.000",
-"Camila cargó $40.000",
-"Diego cargó $15.000",
-"Valentina cargó $28.000",
-"Nicolás cargó $60.000",
-"Paula cargó $10.000"
+    "María acaba de cargar $35.000 en Luxor Red",
+    "Juan acaba de cargar $12.000 en Luxor Red",
+    "Lucas acaba de cargar $50.000 en Luxor Red",
+    "Sofía acaba de cargar $18.000 en Luxor Red",
+    "Martín acaba de cargar $22.000 en Luxor Red",
+    "Camila acaba de cargar $40.000 en Luxor Red",
+    "Diego acaba de cargar $15.000 en Luxor Red",
+    "Valentina acaba de cargar $28.000 en Luxor Red",
+    "Nicolás acaba de cargar $60.000 en Luxor Red",
+    "Paula acaba de cargar $10.000 en Luxor Red"
 ];
 
 const notif = document.getElementById("notif");
@@ -208,10 +235,11 @@ function mostrarNotif() {
 
     setTimeout(() => {
         notif.classList.remove("show");
-    }, 3000);
+    }, 3200);
 }
 
-setInterval(mostrarNotif, 4000);
+mostrarNotif();
+setInterval(mostrarNotif, 4500);
 </script>
 
 </body>
