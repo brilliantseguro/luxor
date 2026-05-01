@@ -53,33 +53,44 @@ body::after {
     margin: 8px auto;
 }
 
-/* NOTIFICACION UNA LINEA */
+/* NOTIFICACION (ESTILO ANTERIOR) */
 .notification {
     margin: 6px auto;
-    max-width: 320px;
+    max-width: 300px;
     background: rgba(0,0,0,0.45);
     backdrop-filter: blur(10px);
-    padding: 6px 12px;
-    border-radius: 999px;
+    padding: 8px 12px;
+    border-radius: 10px;
     font-size: 13px;
     border: 1px solid #00ff66;
     box-shadow: 0 0 8px rgba(0,255,100,0.3);
     opacity: 0;
     transform: translateY(10px);
     transition: 0.4s;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-
-    white-space: nowrap;
+    text-align: center;
 }
 
-/* estrellas pequeñas */
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ESTRELLAS ARRIBA */
 .stars {
     color: #fbbc05;
-    font-size: 11px;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+/* TEXTO */
+.review-text {
+    color: #ffffff;
+}
+
+/* VERDE OSCURO */
+.highlight {
+    color: #0f8a2b;
+    font-weight: 700;
 }
 
 /* BONUS */
@@ -217,8 +228,11 @@ function mostrarNotif() {
     const monto = montos[Math.floor(Math.random() * montos.length)];
 
     notif.innerHTML = `
-        <span class="stars">★★★★★</span>
-        ${nombre} acaba de acreditar ${monto} en Red Luxor
+        <div class="stars">★★★★★</div>
+        <div class="review-text">
+            <span class="highlight">${nombre}</span> acaba de acreditar 
+            <span class="highlight">${monto}</span> en Red Luxor
+        </div>
     `;
 
     notif.classList.add("show");
