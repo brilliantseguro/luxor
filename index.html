@@ -18,7 +18,6 @@ body {
     overflow-x: hidden;
 }
 
-/* FONDO PIRÁMIDE */
 body::before {
     content: "";
     position: fixed;
@@ -38,7 +37,6 @@ body::after {
     z-index: -1;
 }
 
-/* CONTENEDOR */
 .container {
     max-width: 420px;
     margin: auto;
@@ -50,14 +48,12 @@ body::after {
     justify-content: center;
 }
 
-/* LOGO */
 .logo {
     width: 200px;
     max-width: 80%;
     margin: 10px auto 5px;
 }
 
-/* NOTIFICACION */
 .notification {
     margin: 8px auto;
     max-width: 280px;
@@ -72,51 +68,80 @@ body::after {
     transform: translateY(10px);
     transition: 0.4s;
 }
+
 .notification.show {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* BONUS */
 .bonus {
-    margin: 10px 0 5px;
+    margin: 12px 0 8px;
+    padding: 10px 12px;
+    border-radius: 18px;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,215,0,0.65);
+    box-shadow: 0 0 18px rgba(255,215,0,0.35);
     font-size: 20px;
+    line-height: 1.25;
     font-weight: 900;
-    background: linear-gradient(90deg, #ffd700, #ffae00, #fff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 10px gold;
+    color: #ffd700;
+    text-shadow: 0 0 8px #000, 0 0 10px rgba(255,215,0,0.8);
 }
 
-/* BOTON */
+.bonus .gift {
+    display: inline-block;
+    font-size: 28px;
+    margin-right: 6px;
+    filter: drop-shadow(0 0 6px gold);
+    animation: giftBounce 1s infinite alternate;
+}
+
+@keyframes giftBounce {
+    from { transform: rotate(-6deg) scale(1); }
+    to { transform: rotate(6deg) scale(1.15); }
+}
+
 .btn {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     padding: 18px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 14px;
+    font-size: 21px;
+    font-weight: 900;
+    border-radius: 999px;
     background: rgba(0,255,120,0.18);
-    backdrop-filter: blur(12px);
-    border: 2px solid #00ff88;
+    backdrop-filter: blur(14px);
+    border: 2px solid rgba(0,255,136,0.95);
     color: #00ff88;
     text-decoration: none;
-    margin: 12px 0;
-    box-shadow: 0 0 18px rgba(0,255,136,0.4);
-    animation: pulse 1.5s infinite alternate;
+    margin: 14px 0;
+    box-shadow: 0 0 20px rgba(0,255,136,0.55);
+    animation: pulse 0.85s infinite alternate;
+}
+
+.btn .wa {
+    width: 27px;
+    height: 27px;
+    display: inline-block;
 }
 
 @keyframes pulse {
-    from { transform: scale(1); }
-    to { transform: scale(1.05); }
+    from {
+        transform: scale(1);
+        box-shadow: 0 0 16px rgba(0,255,136,0.45);
+    }
+    to {
+        transform: scale(1.08);
+        box-shadow: 0 0 36px rgba(0,255,136,0.95);
+    }
 }
 
-/* GANAMOS */
 .ganamos {
     width: 180px;
     margin: 8px auto;
 }
 
-/* SLOTS */
 .slots-container {
     overflow: hidden;
     margin-top: 10px;
@@ -143,7 +168,6 @@ body::after {
     object-fit: cover;
 }
 
-/* ANIMACION */
 @keyframes scroll {
     0% {transform: translateX(0);}
     100% {transform: translateX(-50%);}
@@ -155,44 +179,39 @@ body::after {
 
 <div class="container">
 
-    <!-- LOGO -->
-    <img src="logo.png" class="logo">
+    <img src="logo.png" class="logo" alt="Luxor Red">
 
-    <!-- NOTIFICACION -->
     <div id="notif" class="notification"></div>
 
-    <!-- BONUS -->
     <div class="bonus">
-        🎁 Te regalamos un 30% EXTRA a tu recarga
+        <span class="gift">🎁</span>
+        Te regalamos un 30% EXTRA en tu primer recarga
     </div>
 
-    <!-- BOTON -->
     <a class="btn" href="https://wa.me/549XXXXXXXXXX" target="_blank">
-        📲 Pedir mi bono
+        <svg class="wa" viewBox="0 0 32 32" fill="currentColor">
+            <path d="M16.04 3C9.42 3 4.05 8.37 4.05 14.99c0 2.64.86 5.08 2.31 7.06L4 29l7.18-2.3c1.87 1.14 4.08 1.79 6.43 1.79h.01c6.62 0 11.99-5.37 11.99-11.99C29.61 8.37 22.66 3 16.04 3zm6.98 17.16c-.29.82-1.7 1.56-2.37 1.66-.61.09-1.38.13-2.23-.14-.51-.16-1.17-.38-2.02-.74-3.55-1.53-5.86-5.1-6.04-5.34-.18-.24-1.44-1.91-1.44-3.65 0-1.74.91-2.6 1.23-2.96.32-.36.7-.45.93-.45.23 0 .47 0 .67.01.22.01.5-.08.78.6.29.7.98 2.4 1.07 2.58.09.18.15.39.03.63-.12.24-.18.39-.36.6-.18.21-.38.47-.54.63-.18.18-.37.37-.16.73.21.36.94 1.55 2.02 2.51 1.39 1.24 2.56 1.62 2.92 1.8.36.18.57.15.78-.09.21-.24.9-1.05 1.14-1.41.24-.36.48-.3.81-.18.33.12 2.1.99 2.46 1.17.36.18.6.27.69.42.09.15.09.87-.2 1.69z"/>
+        </svg>
+        Pedir mi bono
     </a>
 
-    <!-- GANAMOS -->
-    <img src="ganamos.png" class="ganamos">
+    <img src="ganamos.png" class="ganamos" alt="Ganamos.net">
 
-    <!-- SLOTS -->
     <div class="slots-container">
         <div class="slots">
+            <div class="slot"><img src="1111.png" alt="Joker's Jewels Cash"></div>
+            <div class="slot"><img src="4444.png" alt="Joker's Jewels Hot"></div>
+            <div class="slot"><img src="3333.png" alt="Sweet Bonanza"></div>
+            <div class="slot"><img src="2222.png" alt="Big Bass Bonanza"></div>
+            <div class="slot"><img src="6666.webp" alt="Sugar Rush"></div>
+            <div class="slot"><img src="5555.jpg" alt="Volcano Rising"></div>
 
-            <div class="slot"><img src="1111.png"></div>
-            <div class="slot"><img src="4444.png"></div>
-            <div class="slot"><img src="3333.png"></div>
-            <div class="slot"><img src="2222.png"></div>
-            <div class="slot"><img src="6666.webp"></div>
-            <div class="slot"><img src="5555.jpg"></div>
-
-            <!-- DUPLICADO -->
-            <div class="slot"><img src="1111.png"></div>
-            <div class="slot"><img src="4444.png"></div>
-            <div class="slot"><img src="3333.png"></div>
-            <div class="slot"><img src="2222.png"></div>
-            <div class="slot"><img src="6666.webp"></div>
-            <div class="slot"><img src="5555.jpg"></div>
-
+            <div class="slot"><img src="1111.png" alt="Joker's Jewels Cash"></div>
+            <div class="slot"><img src="4444.png" alt="Joker's Jewels Hot"></div>
+            <div class="slot"><img src="3333.png" alt="Sweet Bonanza"></div>
+            <div class="slot"><img src="2222.png" alt="Big Bass Bonanza"></div>
+            <div class="slot"><img src="6666.webp" alt="Sugar Rush"></div>
+            <div class="slot"><img src="5555.jpg" alt="Volcano Rising"></div>
         </div>
     </div>
 
@@ -200,16 +219,16 @@ body::after {
 
 <script>
 const mensajes = [
-"Maria cargó $35.000",
-"Juan cargó $12.000",
-"Lucas cargó $50.000",
-"Sofía cargó $18.000",
-"Martín cargó $22.000",
-"Camila cargó $40.000",
-"Diego cargó $15.000",
-"Valentina cargó $28.000",
-"Nicolás cargó $60.000",
-"Paula cargó $10.000"
+    "María acaba de cargar $35.000 en Luxor Red",
+    "Juan acaba de cargar $12.000 en Luxor Red",
+    "Lucas acaba de cargar $50.000 en Luxor Red",
+    "Sofía acaba de cargar $18.000 en Luxor Red",
+    "Martín acaba de cargar $22.000 en Luxor Red",
+    "Camila acaba de cargar $40.000 en Luxor Red",
+    "Diego acaba de cargar $15.000 en Luxor Red",
+    "Valentina acaba de cargar $28.000 en Luxor Red",
+    "Nicolás acaba de cargar $60.000 en Luxor Red",
+    "Paula acaba de cargar $10.000 en Luxor Red"
 ];
 
 const notif = document.getElementById("notif");
